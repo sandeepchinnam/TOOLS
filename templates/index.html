@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('shorten_url') }}">URL Shortener</a></li>
+                <li><a href="/password">Generate Password</a></li>
+            </ul>
+        </nav>
+        <h1>QR Code Generator</h1>
+        <form method="POST" action="/">
+            <input type="text" name="url" placeholder="Enter URL">
+            <input type="submit" value="Generate QR Code">
+        </form>
+        {% if qr_code %}
+        <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+        {% endif %}
+    </div>
+</body>
+</html>

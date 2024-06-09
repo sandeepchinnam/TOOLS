@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('shorten_url') }}">URL Shortener</a></li>
+                <li><a href="/password">Generate Password</a></li>
+            </ul>
+        </nav>
+        <h1>URL Shortener</h1>
+        <form method="POST" action="/shorten">
+            <input type="text" name="url" placeholder="Enter URL">
+            <input type="submit" value="Shorten URL">
+        </form>
+        {% if short_url %}
+        <p>Shortened URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>
