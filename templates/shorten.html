@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-title">URL Shortener</div>
+        <a href="javascript:void(0);" class="toggle-button" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links" id="navbar-links">
+            <ul>
+                <li><a href="{{ url_for('home') }}">QR CODE</a></li>
+                <li><a href="{{ url_for('shorten_url') }}">URL Shortener</a></li>
+                <li><a href="{{ url_for('generate_password_route') }}">Generate Password</a></li>
+                <li><a href="{{ url_for('jpg_png') }}">Convert Images</a></li>
+            </ul>
+        </div>
+    </nav>
+   
+    <div class="container">
+        <h1>URL Shortener</h1>
+        <form method="POST" action="/shorten">
+            <input type="text" name="url" placeholder="Enter URL" required>
+            <input type="submit" value="Shorten URL">
+        </form>
+        {% if short_url %}
+        <p>Shortened URL: <a href="{{ short_url }}" target="_blank">{{ short_url }}</a></p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

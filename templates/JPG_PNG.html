@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-title">QR Code Generator</div>
+        <a href="javascript:void(0);" class="toggle-button" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div class="navbar-links" id="navbar-links">
+            <ul>
+                <li><a href="{{ url_for('home') }}">QR CODE</a></li>
+                <li><a href="{{ url_for('shorten_url') }}">URL Shortener</a></li>
+                <li><a href="{{ url_for('generate_password_route') }}">Generate Password</a></li>
+                <li><a href="{{ url_for('jpg_png') }}">Convert Images</a></li>
+            </ul>
+        </div>
+    </nav>
+   
+    <div class="container">
+        <h1>Convert JPG to PNG</h1>
+        <form method="POST" action="/convert_jpg_to_png" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/jpeg">
+            <input type="submit" value="Convert">
+        </form>
+        
+        <h1>Convert PNG to JPG</h1>
+        <form method="POST" action="/convert_png_to_jpg" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/png">
+            <input type="submit" value="Convert">
+        </form>
+        
+        <h1>Convert PDF to JPG</h1>
+        <form method="POST" action="/convert_pdf_to_jpg" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".pdf">
+            <input type="submit" value="Convert">
+        </form>
+    </div>
+</body>
+</html>
